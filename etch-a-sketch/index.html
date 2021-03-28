@@ -3,30 +3,41 @@
     <title>Etch-A-Sketch</title>
     <link type="text/css" rel="stylesheet" href="styles/reset.css">
     <link type="text/css" rel="stylesheet" href="styles/main.css">
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.0.0-rc.7/dist/html2canvas.min.js"></script>
 </head>
 <body>
             <!--Main Content-->
             <main>
-                <h1 class="main-title">ETCH-A-SKETCH</h1> 
+                <h1 class="main-title"> ~ Etch-A-Sketch ~ </h1> 
                 <!--<input id="main-input"></input>-->
-                <div id="main-grid-container">
-                    <div id="main-grid">
-                </div>
 
-            
+                <div id="main-grid-container">
+                    <div class="grid-container-item" id="main-grid"></div>  
+                    <canvas class="grid-container-item" id="canvas">Maincanvas</canvas>
                 </div>
                 <div id="palette-container">
+                    <p class="pallette-button">COLOR PICKER</p>
+                    <input class="palette-button" id="color-picker-button" type="color" value="#ff0000">
                     <button class="palette-button" id="red-button" value="red"></button>
                     <button class="palette-button" id="green-button" value="green"></button>
                     <button class="palette-button" id="blue-button" value="blue"></button>
                     <button class="palette-button" id="yellow-button" value="yellow"></button>
                     <button class="palette-button" id="black-button" value="black"></button>
                     <button class="palette-button" id="random-button" value="random">?</button>
-                    <button class="palette-button" id="white-button" value="white"></button>
+                    <button class="palette-button" id="eraser-button" value="#c7c7c7"></button>
+                    <button class="palette-button" id="outline-button" value=true> TOGGLE BRUSH OUTLINE </button>
                 </div>
-                <button id="restart">RESET MY SKETCH</button>
+                <div style="display: flex; justify-content: space-around;">
+                    <a href="#" id="download-button" onclick="downloadSketch()" download="mysketch.png">DOWNLOAD</a>
+                    <button id="restart">RESET</button>
+                    <button id="generate-random">RANDOM</button>
+                    <button id="draw-grid">GRID ME UP!</button>
+                </div>
+                <div class="cursor"></div>
                 <div id="attributions">Icons made by <a style="font-family: monospace; text-decoration: none;" href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
                 <script type="application/javascript" src="scripts/main.js"></script>
             </main>
 </body>
 </html>
+
+
