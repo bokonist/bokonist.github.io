@@ -3,38 +3,50 @@
     <title>Etch-A-Sketch</title>
     <link type="text/css" rel="stylesheet" href="styles/reset.css">
     <link type="text/css" rel="stylesheet" href="styles/main.css">
-    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.0.0-rc.7/dist/html2canvas.min.js"></script>
+
 </head>
 <body>
             <!--Main Content-->
             <main>
-                <h1 class="main-title"> ~ Etch-A-Sketch ~ </h1> 
-                <!--<input id="main-input"></input>-->
-
-                <div id="main-grid-container">
-                    <div class="grid-container-item" id="main-grid"></div>  
-                    <canvas class="grid-container-item" id="canvas">Maincanvas</canvas>
+                <div class="main-title-container">
+                    <img class="icon-image" src="assets/icon.png"></img>
+                    <h1 class="main-title"> ~ Etch-A-Sketch ~ </h1> 
+                    <img class="icon-image" src="assets/icon.png"></img>
                 </div>
-                <div id="palette-container">
-                    <p class="pallette-button">COLOR PICKER</p>
-                    <input class="palette-button" id="color-picker-button" type="color" value="#ff0000">
-                    <button class="palette-button" id="red-button" value="red"></button>
-                    <button class="palette-button" id="green-button" value="green"></button>
-                    <button class="palette-button" id="blue-button" value="blue"></button>
-                    <button class="palette-button" id="yellow-button" value="yellow"></button>
-                    <button class="palette-button" id="black-button" value="black"></button>
-                    <button class="palette-button" id="random-button" value="random">?</button>
-                    <button class="palette-button" id="eraser-button" value="#c7c7c7"></button>
-                    <button class="palette-button" id="outline-button" value=true> TOGGLE BRUSH OUTLINE </button>
+                <div class="main-coloring-area">
+                    <div id="main-grid-container">
+                        <div class="grid-adjustments">
+                            <label id="grid-adjustor-label" for="grid-adjustor">~ RESET AND ADJUST GRID SIZE ~</label> 
+                            <input type="range" id="grid-adjustor" name="grid-adjustor" min="2" max="100">
+                            
+                        </div>
+                        <div class="grid-container-item" id="main-grid"></div>  
+                        <canvas  class="grid-container-item" id="canvas"></canvas>
+                    </div>
+                    
+                    <div id="palette-container">
+                        <p class="pallette-button"><strong>COLOR PICKER</strong></p>
+                        <input class="palette-button" id="color-picker-button" type="color" value="#ff0000">
+                        <button class="palette-button" id="red-button" value="red"></button>
+                        <button class="palette-button" id="green-button" value="green"></button>
+                        <button class="palette-button" id="blue-button" value="blue"></button>
+                        <button class="palette-button" id="yellow-button" value="yellow"></button>
+                        <button class="palette-button" id="black-button" value="black"></button>
+                        <button class="palette-button" id="random-button" value="random"></button>
+                        <button class="palette-button" id="eraser-button" value="#c7c7c7"></button>
+                        <button class="palette-button" id="outline-button" value=true> TURN OUTLINE OFF </button>
+                        <p class="pallette-button"><strong>CURRENT BRUSH: </strong></p>
+                        <button class="palette-button" id="current-color" value="black"></button>
+                    </div>
                 </div>
-                <div style="display: flex; justify-content: space-around;">
+                <div class="options-panel">
                     <a href="#" id="download-button" onclick="downloadSketch()" download="mysketch.png">DOWNLOAD</a>
                     <button id="restart">RESET</button>
                     <button id="generate-random">RANDOM</button>
                     <button id="draw-grid">GRID ME UP!</button>
                 </div>
                 <div class="cursor"></div>
-                <div id="attributions">Icons made by <a style="font-family: monospace; text-decoration: none;" href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+                <div id="attributions"><div>Icons made by <a href="" title="monkik">monkik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div></div>
                 <script type="application/javascript" src="scripts/main.js"></script>
             </main>
 </body>
