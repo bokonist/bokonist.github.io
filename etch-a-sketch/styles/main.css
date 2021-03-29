@@ -14,10 +14,10 @@
     box-sizing: border-box;
     text-align: center;
     outline: none;
+    cursor: none;
 }
 .main-coloring-area {
     width: 100%;
-    cursor: none;
 }
 
 html {
@@ -142,7 +142,7 @@ main {
     width: auto;
     height: auto;
 }
-.palette-button, #current-color{
+.palette-button, #outline-button,  #current-color{
     outline: none;
     height: 35px;
     width: 35px;

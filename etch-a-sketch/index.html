@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <head> 
-    <title>Etch-A-Sketch</title>
+    <title>Pixel Picasso</title>
     <link type="text/css" rel="stylesheet" href="styles/reset.css">
     <link type="text/css" rel="stylesheet" href="styles/main.css">
 
@@ -10,13 +10,14 @@
             <main>
                 <div class="main-title-container">
                     <img class="icon-image" src="assets/icon.png"></img>
-                    <h1 class="main-title"> ~ Etch-A-Sketch ~ </h1> 
+                    <h1 class="main-title"> ~ pixel-picasso ~ </h1> 
                     <img class="icon-image" src="assets/icon.png"></img>
                 </div>
                 <div class="main-coloring-area">
                     <div id="main-grid-container">
                         <div class="grid-adjustments">
                             <label id="grid-adjustor-label" for="grid-adjustor">~ RESET AND ADJUST GRID SIZE ~</label> 
+                            <p id="grid-size-label">50 x 50</p>
                             <input type="range" id="grid-adjustor" name="grid-adjustor" min="2" max="100">
                             
                         </div>
@@ -33,10 +34,10 @@
                         <button class="palette-button" id="yellow-button" value="yellow"></button>
                         <button class="palette-button" id="black-button" value="black"></button>
                         <button class="palette-button" id="random-button" value="random"></button>
-                        <button class="palette-button" id="eraser-button" value="#c7c7c7"></button>
-                        <button class="palette-button" id="outline-button" value=true> TURN OUTLINE OFF </button>
+                        <button class="palette-button" id="eraser-button" value="eraser"></button>
+                        <button id="outline-button" value=true> TURN OUTLINE OFF </button>
                         <p class="pallette-button"><strong>CURRENT BRUSH: </strong></p>
-                        <button class="palette-button" id="current-color" value="black"></button>
+                        <button id="current-color" value="black"></button>
                     </div>
                 </div>
                 <div class="options-panel">
