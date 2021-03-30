@@ -77,7 +77,7 @@ function colorCell (event) {
         MOUSE_CURSOR.style['background-color']=currentBrushColor;
         event.target.style['background-color']= currentBrushColor;
         ctx.fillStyle=currentBrushColor;
-        //hacky piece of code to erase just a few pixels more to accomodate for the border. 
+        //hacky piece of code to erase just a few pixels more to accomodate for the border on a canvas cell. 
         ctx.fillRect((event.target.getAttribute('column')*cellSize)-2, (event.target.getAttribute('row')*cellSize)-2, cellSize+2, cellSize+2);  
     }
     else{
@@ -148,7 +148,7 @@ function setCurrentBrush (brushColor, brushStyle) //brushStyle is true/false for
         }
         MOUSE_CURSOR.style['background-color']=currentBrushColor;
         CURRENT_COLOR.style['background-color']=currentBrushColor;
-        if(brushColor !== 'eraser' && brushStyle == true) // user picked a color that's not eraser and outline is on
+        if(brushColor !== 'eraser' || brushStyle == true) // user picked a color that's not eraser or outline is on, thss code block is kinda buggy
             CURRENT_COLOR.style.border= '5px solid black';
         else
             CURRENT_COLOR.style.border= 'none';
