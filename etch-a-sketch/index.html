@@ -15,18 +15,25 @@
                 </div>
                 <div class="main-coloring-area">
                     <div id="main-grid-container">
-                        <div class="grid-adjustments">
-                            <label id="grid-adjustor-label" for="grid-adjustor">~ RESET AND ADJUST GRID SIZE ~</label> 
-                            <p id="grid-size-label">50 x 50</p>
-                            <input type="range" id="grid-adjustor" name="grid-adjustor" min="2" max="100">
-                            
+                        <div class="adjust-and-main">
+                            <div class="grid-adjustments">
+                                <label id="grid-adjustor-label" for="grid-adjustor">~ RESET AND ADJUST GRID SIZE ~</label> 
+                                <p id="grid-size-label">50 x 50</p>
+                                <input type="range" id="grid-adjustor" name="grid-adjustor" min="2" max="100">
+                                
+                            </div>
+                            <div class="grid-container-item" id="main-grid"></div>  
                         </div>
-                        <div class="grid-container-item" id="main-grid"></div>  
+                        
                         <canvas  class="grid-container-item" id="canvas"></canvas>
+                        <div>
+                            <p class="pallette-button"><strong></strong></p>
+                            <button id="current-color" value="black"></button>
+                        </div>
                     </div>
                     
                     <div id="palette-container">
-                        <p class="pallette-button"><strong>COLOR PICKER</strong></p>
+                        <!--<p class="pallette-button"><strong>COLOR PICKER</strong></p>-->
                         <input class="palette-button" id="color-picker-button" type="color" value="#ff0000">
                         <button class="palette-button" id="red-button" value="red"></button>
                         <button class="palette-button" id="green-button" value="green"></button>
@@ -35,9 +42,10 @@
                         <button class="palette-button" id="black-button" value="black"></button>
                         <button class="palette-button" id="random-button" value="random"></button>
                         <button class="palette-button" id="eraser-button" value="eraser"></button>
+                    </div>
+                    <div class="config-panel">
                         <button id="outline-button" value=true> TURN OUTLINE OFF </button>
-                        <p class="pallette-button"><strong>CURRENT BRUSH: </strong></p>
-                        <button id="current-color" value="black"></button>
+
                     </div>
                 </div>
                 <div class="options-panel">

@@ -14,10 +14,12 @@
     box-sizing: border-box;
     text-align: center;
     outline: none;
-    cursor: none;
+    cursor: none;  
+
 }
 .main-coloring-area {
     width: 100%;
+ 
 }
 
 html {
@@ -92,22 +94,27 @@ main {
     border: 20px solid black;
     box-shadow: 20px 20px 10px 0px #a7a1a1;
 }
+.adjust-and-main {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .grid-adjustments {
     transform: rotate(-90deg);
-
+    /*min-width: 400px;*/
     position: absolute;
-    right: 1350px;
-    min-width: 400px;
+    right: 400px;
     justify-content: space-between;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    width: fit-content;
 }
 
 #grid-adjustor-label {
     font-size: 18pt;
-
     margin-bottom: 0px;
 }
 #main-grid {
@@ -166,6 +173,12 @@ main {
 #color-picker-button {
     width:80px;
     border-radius: 0px;
+}
+
+.config-panel {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
 }
 #outline-button {
     width: fit-content;

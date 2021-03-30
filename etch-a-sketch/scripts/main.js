@@ -78,7 +78,7 @@ function colorCell (event) {
         event.target.style['background-color']= currentBrushColor;
         ctx.fillStyle=currentBrushColor;
         //hacky piece of code to erase just a few pixels more to accomodate for the border. 
-        ctx.fillRect((event.target.getAttribute('column')*cellSize)-1, (event.target.getAttribute('row')*cellSize)-1, cellSize+2, cellSize+2);  
+        ctx.fillRect((event.target.getAttribute('column')*cellSize)-2, (event.target.getAttribute('row')*cellSize)-2, cellSize+2, cellSize+2);  
     }
     else{
         MOUSE_CURSOR.style['background-color']=currentBrushColor;
@@ -98,6 +98,12 @@ function colorCell (event) {
 
 function setCurrentBrush (brushColor, brushStyle) //brushStyle is true/false for OUTLINE preference 
 {
+    if(eraserModeON) // previous selection was eraser and we toggled outline off automatically for that, this just turns it back on
+    {
+        eraserModeON=false;
+        setOutline(true);
+    }
+           
     if(brushColor === "random")
     {
         randomModeON = true;
@@ -113,7 +119,7 @@ function setCurrentBrush (brushColor, brushStyle) //brushStyle is true/false for
     }
     else {
         randomModeON= false;
-        eraserModeON=false;
+         
         MOUSE_CURSOR.style.border= '2px solid black';
         switch (brushColor) {
             case "red":
@@ -134,7 +140,7 @@ function setCurrentBrush (brushColor, brushStyle) //brushStyle is true/false for
             case "eraser":
                 currentBrushColor='#c7c7c7';
                 eraserModeON=true;
-                setOutline(false);
+                setOutline(false); //eraser brush will have no outline
                 break;
             default: // color was picked with random color picker
                 currentBrushColor= brushColor;
@@ -142,7 +148,7 @@ function setCurrentBrush (brushColor, brushStyle) //brushStyle is true/false for
         }
         MOUSE_CURSOR.style['background-color']=currentBrushColor;
         CURRENT_COLOR.style['background-color']=currentBrushColor;
-        if(brushColor !== 'eraser' && brushStyle)
+        if(brushColor !== 'eraser' && brushStyle == true) // user picked a color that's not eraser and outline is on
             CURRENT_COLOR.style.border= '5px solid black';
         else
             CURRENT_COLOR.style.border= 'none';
@@ -162,9 +168,8 @@ RESET_BUTTON.addEventListener ('click', (e) => {
     drawInitial();
 })
 
-//function to generate random image. basically simulates a mouseover event for all cells
+//function to generate random image. basically turns random mode on and simulates a mouseover event for all cells
 RANDOM_BUTTON.addEventListener('click', (e) => {
-    randomModeON=true;
     setCurrentBrush("random", OUTLINE_BUTTON.value);
     let canvasNodes = document.querySelectorAll('.cell');
     for (let i of canvasNodes){
@@ -219,12 +224,13 @@ function setOutline(preference)
 }
 OUTLINE_BUTTON.addEventListener('click',toggleOutline);
 
-// function to switch brush color, and turn outline on if the user wants to
+// function to fire when one of the palette buttons are clicked to pick a new color
 for (let i of document.querySelectorAll('.palette-button')) {
     i.addEventListener('click', (e) => {
        setCurrentBrush(e.target.value, OUTLINE_BUTTON.value);
     });
 }
+
 //funtions to fire when a new color is picked with color picker, or just clicked and no new value is picked
 COLOR_PICKER.addEventListener('input', (e) => {
     console.log("Color changed to ", COLOR_PICKER.value);
