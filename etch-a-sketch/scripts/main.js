@@ -9,6 +9,7 @@ const CURRENT_COLOR = document.querySelector('#current-color');
 const canvas = document.querySelector('#canvas');
 const ctx = canvas.getContext('2d');
 
+let penActive=false;
 let currentBrushColor;
 let randomModeON;
 let eraserModeON;
@@ -29,6 +30,7 @@ function drawInitial()
 {
     MAIN_GRID.innerHTML=''; //clear the main grid if it already exists
     randomModeON = true;
+    CURRENT_COLOR.style.visibility="hidden";
     setOutline(true);
     setCurrentBrush("random", OUTLINE_BUTTON.value);
     cellSize= 500/GRID_SIZE;
@@ -60,38 +62,40 @@ drawInitial();
 
 //funtion to color a cell and the corresponding position on canvas element on the side
 function colorCell (event) {
-
-    if(randomModeON)
+    if(penActive)
     {
-        let rvalue = Math.floor((Math.random() * 256) + 1);
-        let bvalue = Math.floor((Math.random() * 256) + 1);
-        let gvalue = Math.floor((Math.random() * 256) + 1);
-        currentBrushColor=`rgb(${rvalue},${gvalue},${bvalue})`;
-        MOUSE_CURSOR.style['background-color']=currentBrushColor;
-        CURRENT_COLOR.style['background-color']= currentBrushColor;
-        event.target.style['background-color']= currentBrushColor;
-        ctx.fillStyle=currentBrushColor;
-        ctx.fillRect(event.target.getAttribute('column')*cellSize, event.target.getAttribute('row')*cellSize, cellSize, cellSize);
-    }
-    else if (eraserModeON) {
-        MOUSE_CURSOR.style['background-color']=currentBrushColor;
-        event.target.style['background-color']= currentBrushColor;
-        ctx.fillStyle=currentBrushColor;
-        //hacky piece of code to erase just a few pixels more to accomodate for the border on a canvas cell. 
-        ctx.fillRect((event.target.getAttribute('column')*cellSize)-2, (event.target.getAttribute('row')*cellSize)-2, cellSize+2, cellSize+2);  
-    }
-    else{
-        MOUSE_CURSOR.style['background-color']=currentBrushColor;
-        event.target.style['background-color']= currentBrushColor;
-        ctx.fillStyle=currentBrushColor;
-        ctx.fillRect(event.target.getAttribute('column')*cellSize, event.target.getAttribute('row')*cellSize, cellSize, cellSize);
-    }
+        if(randomModeON)
+        {
+            let rvalue = Math.floor((Math.random() * 256) + 1);
+            let bvalue = Math.floor((Math.random() * 256) + 1);
+            let gvalue = Math.floor((Math.random() * 256) + 1);
+            currentBrushColor=`rgb(${rvalue},${gvalue},${bvalue})`;
+            MOUSE_CURSOR.style['background-color']=currentBrushColor;
+            CURRENT_COLOR.style['background-color']= currentBrushColor;
+            event.target.style['background-color']= currentBrushColor;
+            ctx.fillStyle=currentBrushColor;
+            ctx.fillRect(event.target.getAttribute('column')*cellSize, event.target.getAttribute('row')*cellSize, cellSize, cellSize);
+        }
+        else if (eraserModeON) {
+            MOUSE_CURSOR.style['background-color']=currentBrushColor;
+            event.target.style['background-color']= currentBrushColor;
+            ctx.fillStyle=currentBrushColor;
+            //hacky piece of code to erase just a few pixels more to accomodate for the border on a canvas cell. 
+            ctx.fillRect((event.target.getAttribute('column')*cellSize)-2, (event.target.getAttribute('row')*cellSize)-2, cellSize+2, cellSize+2);  
+        }
+        else{
+            MOUSE_CURSOR.style['background-color']=currentBrushColor;
+            event.target.style['background-color']= currentBrushColor;
+            ctx.fillStyle=currentBrushColor;
+            ctx.fillRect(event.target.getAttribute('column')*cellSize, event.target.getAttribute('row')*cellSize, cellSize, cellSize);
+        }
 
-    if(OUTLINE_BUTTON.value=== "true")
-    {
-        ctx.strokeStyle='black';
-        ctx.lineWidth=2;//outline thickness
-        ctx.strokeRect(event.target.getAttribute('column')*cellSize, event.target.getAttribute('row')*cellSize, cellSize, cellSize);
+        if(OUTLINE_BUTTON.value=== "true")
+        {
+            ctx.strokeStyle='black';
+            ctx.lineWidth=2;//outline thickness
+            ctx.strokeRect(event.target.getAttribute('column')*cellSize, event.target.getAttribute('row')*cellSize, cellSize, cellSize);
+        }
     }
     
 }
@@ -187,6 +191,21 @@ DRAW_GRID.addEventListener('click', (e)=> {
         ctx.strokeRect(i.getAttribute('column')*cellSize, i.getAttribute('row')*cellSize,cellSize,cellSize);
     }
         
+})
+
+MAIN_GRID.addEventListener('click', (e)=> {
+    if(penActive) // toggles pen when main grid is clicked
+    {
+        penActive=false;
+        CURRENT_COLOR.style.visibility='hidden';
+    }
+
+    else
+    {
+        penActive=true;
+        CURRENT_COLOR.style.visibility='visible';
+    }
+
 })
 
 function toggleOutline (event)
