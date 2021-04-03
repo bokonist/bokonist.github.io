@@ -175,11 +175,13 @@ RESET_BUTTON.addEventListener ('click', (e) => {
 //function to generate random image. basically turns random mode on and simulates a mouseover event for all cells
 RANDOM_BUTTON.addEventListener('click', (e) => {
     setCurrentBrush("random", OUTLINE_BUTTON.value);
+    penActive =true;
     let canvasNodes = document.querySelectorAll('.cell');
     for (let i of canvasNodes){
         let mouseoverEvent = new Event('mouseover');
         i.dispatchEvent(mouseoverEvent);
     }
+    penActive=false;
 })
 
 //function to fire if the user wants a grid on their final image

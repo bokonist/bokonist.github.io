@@ -136,6 +136,7 @@ main {
 
     border: 1px solid black;
     background-color: #c7c7c7;
+    transition: 0.5s;
 }
 .cell:hover{
     background-color: black;
