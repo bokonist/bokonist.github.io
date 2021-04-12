@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<head> 
+    <title>Tic-Tac-Toe</title>
+    <link type="text/css" rel="stylesheet" href="styles/reset.css">
+    <link type="text/css" rel="stylesheet" href="styles/main.css">
+</head>
+<!-- The DOM -->
+<body>
+    <div class="main-title-container">
+    
+        <h1 class="main-title"> tic - tac - toe </h1>
+    
+    </div>
+    <div id="main-body-container">
+        <div id= "player-1-details" class="player-details">
+            <h1>Player One</h1>
+            <p>X</p>
+        </div>
+        <div id = "game-board">
+            <div>
+                <div class = "game-square" id="square-0" value=0> </div>
+                <div class = "game-square" id="square-3" value=3> </div>
+                <div class = "game-square" id="square-6" value=6> </div>
+            </div>
+            <div>
+                <div class = "game-square" id="square-1" value=1> </div>
+                <div class = "game-square" id="square-4" value=4> </div>
+                <div class = "game-square" id="square-7" value=7> </div>
+            </div>
+            <div>
+                <div class = "game-square" id="square-2" value=2> </div>
+                <div class = "game-square" id="square-5" value=5> </div>
+                <div class = "game-square" id="square-8" value=8> </div>
+            </div>
+        </div>
+        <div id= "player-2-details" class="player-details">
+            <h1>Player Two</h1>
+            <p>O</p>
+        </div>
+    </div>
+    
+    <a id ="restart-button">Restart Game!</a>
+    <script src="scripts/main.js"></script>
+  </body>
